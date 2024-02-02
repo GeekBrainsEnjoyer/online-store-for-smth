@@ -1,1 +1,0 @@
-# docker-django-psql-nginx_dev-prod
