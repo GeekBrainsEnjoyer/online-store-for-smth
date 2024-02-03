@@ -1,0 +1,13 @@
+{% load thumbnail %}
+
+{% for product in products %}
+<div class="card" style="width: 18rem; display: inline-block">
+  {% thumbnail product.image "300x300" as img %}
+  <img src="{{ img.url }}" />
+  {% endthumbnail %}
+  <div class="card-body">
+    <h5 class="card-title">{{ product.name }}</h5>
+    <p class="card-text">{{ product.description|truncatewords:5 }}</p>
+  </div>
+</div>
+{% endfor %}
