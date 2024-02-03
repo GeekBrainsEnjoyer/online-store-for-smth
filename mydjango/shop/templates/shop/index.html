@@ -1,13 +1,14 @@
-{% load thumbnail %}
+{% load static %}
 
-{% for product in products %}
-<div class="card" style="width: 18rem; display: inline-block">
-  {% thumbnail product.image "300x300" as img %}
-  <img src="{{ img.url }}" />
-  {% endthumbnail %}
-  <div class="card-body">
-    <h5 class="card-title">{{ product.name }}</h5>
-    <p class="card-text">{{ product.description|truncatewords:5 }}</p>
-  </div>
-</div>
-{% endfor %}
+<link rel="stylesheet" href="{% static 'shop/style.css' %}" />
+{% if products_list %}
+<ul>
+  {% for product in products_list %}
+  <li>
+    <a>{{ product}}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No product are available.</p>
+{% endif %}

@@ -1,6 +1,4 @@
-
-from django.conf import settings
-from django.shortcuts import render
+from django.views import generic
 
 
 from .models import Product
@@ -8,6 +6,9 @@ from .models import Product
 # Create your views here.
 
 
-def index(request):
-    products = Product.objects.order_by('name')
-    return render(request, 'shop/index.html', {'products': products, 'media_url': settings.MEDIA_URL})
+class IndexView(generic.ListView):
+    template_name = 'shop/index.html'
+    context_object_name = 'products_list'
+
+    def get_queryset(self):
+        return Product.objects.order_by('name')
